@@ -1,0 +1,12 @@
+{
+  "name": "ai-dev-journal",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/journal.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
