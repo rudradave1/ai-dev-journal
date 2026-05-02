@@ -5,11 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const USER = process.env.GITHUB_USERNAME;
-const GH_TOKEN = process.env.GITHUB_TOKEN;
-const OR_KEY = process.env.OPENROUTER_API_KEY;
+const CACHE_FILE = "cache.json";
 
 const headers = {
-  Authorization: `Bearer ${GH_TOKEN}`,
   Accept: "application/vnd.github+json"
 };
 
@@ -33,17 +31,14 @@ function extract(events) {
   for (const e of events) {
     if (e.type !== "PushEvent") continue;
 
-    const repo = e.repo.name;
+    const repo = e.repo?.name;
+    if (!repo) continue;
 
-    for (const c of e.payload.commits) {
-      const msg = c.message.trim();
+    const commits = e.payload?.commits || [];
 
-      if (
-        msg.length < 5 ||
-        msg.toLowerCase().includes("merge") ||
-        msg.toLowerCase().includes("readme") ||
-        msg.toLowerCase().includes("typo")
-      ) continue;
+    for (const c of commits) {
+      const msg = c.message?.trim();
+      if (!msg) continue;
 
       if (!map[repo]) map[repo] = [];
       map[repo].push(msg);
@@ -51,6 +46,21 @@ function extract(events) {
   }
 
   return map;
+}
+
+// ------------------
+// CACHE SAVE
+// ------------------
+function saveCache(map) {
+  fs.writeFileSync(CACHE_FILE, JSON.stringify(map, null, 2));
+}
+
+// ------------------
+// CACHE LOAD
+// ------------------
+function loadCache() {
+  if (!fs.existsSync(CACHE_FILE)) return {};
+  return JSON.parse(fs.readFileSync(CACHE_FILE));
 }
 
 // ------------------
@@ -67,7 +77,7 @@ function fallback(map) {
     out += "\n";
   }
 
-  return out || "- Minor updates\n";
+  return out || "- Minor development updates";
 }
 
 // ------------------
@@ -75,17 +85,17 @@ function fallback(map) {
 // ------------------
 async function summarize(map) {
   const formatted = Object.entries(map)
-    .map(([repo, commits]) => {
-      return `${repo}:\n${commits.join("\n")}`;
-    })
+    .map(([repo, commits]) => `${repo}:\n${commits.join("\n")}`)
     .join("\n\n");
 
   const prompt = `
-Summarize today's development work.
+You are summarizing a senior software engineer's daily work.
 
-Group by project.
-Be concise.
-Focus on real work (features, fixes, improvements).
+Rewrite commits into strong, professional engineering updates.
+
+- Group by project
+- Focus on impact
+- Avoid generic phrases
 
 Commits:
 ${formatted}
@@ -94,15 +104,14 @@ ${formatted}
   const res = await axios.post(
     "https://openrouter.ai/api/v1/chat/completions",
     {
-      model: "openrouter/auto",
+      model: "openrouter/free",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.4
     },
     {
       headers: {
-        Authorization: `Bearer ${OR_KEY}`,
-        "HTTP-Referer": `https://github.com/${USER}`,
-        "X-Title": "AI Dev Journal"
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json"
       }
     }
   );
@@ -138,28 +147,42 @@ function update(summary) {
 // MAIN
 // ------------------
 async function main() {
+  let map = {};
+
   try {
+    console.log("Fetching GitHub events...");
     const events = await fetchEvents();
-    const map = extract(events);
+    console.log("GitHub OK");
 
-    if (Object.keys(map).length === 0) {
-      console.log("No meaningful commits");
-      return;
+    map = extract(events);
+
+    if (Object.keys(map).length > 0) {
+      saveCache(map);
     }
 
-    let summary;
-
-    try {
-      summary = await summarize(map);
-    } catch (e) {
-      console.log("AI failed → fallback");
-      summary = fallback(map);
-    }
-
-    update(summary);
   } catch (err) {
-    console.error("Error:", err.message);
+    console.log("GitHub failed → using cached data");
+    map = loadCache();
   }
+
+  if (Object.keys(map).length === 0) {
+    console.log("No data available");
+    update("- Minor development updates");
+    return;
+  }
+
+  let summary;
+
+  try {
+    console.log("Calling OpenRouter...");
+    summary = await summarize(map);
+    console.log("OpenRouter OK");
+  } catch {
+    console.log("AI failed → fallback");
+    summary = fallback(map);
+  }
+
+  update(summary);
 }
 
 main();
