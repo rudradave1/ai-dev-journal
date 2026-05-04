@@ -15,11 +15,16 @@ const headers = {
 // FETCH EVENTS
 // ------------------
 async function fetchEvents() {
-  const res = await axios.get(
-    `https://api.github.com/users/${USER}/events`,
-    { headers }
-  );
-  return res.data.slice(0, 30);
+  const date = new Date().toISOString().split("T")[0];
+  const url = `https://api.github.com/search/commits?q=author:${USER}+committer-date:>=${date}&per_page=100`;
+
+  const searchHeaders = {
+    ...headers,
+    Accept: "application/vnd.github.cloak-preview"
+  };
+
+  const res = await axios.get(url, { headers: searchHeaders });
+  return res.data.items || [];
 }
 
 // ------------------
@@ -28,21 +33,14 @@ async function fetchEvents() {
 function extract(events) {
   const map = {};
 
-  for (const e of events) {
-    if (e.type !== "PushEvent") continue;
+  for (const item of events) {
+    const repo = item.repository?.full_name;
+    const msg = item.commit?.message?.trim();
+    
+    if (!repo || !msg) continue;
 
-    const repo = e.repo?.name;
-    if (!repo) continue;
-
-    const commits = e.payload?.commits || [];
-
-    for (const c of commits) {
-      const msg = c.message?.trim();
-      if (!msg) continue;
-
-      if (!map[repo]) map[repo] = [];
-      map[repo].push(msg);
-    }
+    if (!map[repo]) map[repo] = [];
+    map[repo].push(msg);
   }
 
   return map;
