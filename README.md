@@ -38,6 +38,12 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-05-08
+**droidperf**  
+- Released version 2.1.0, integrating smart log preprocessing and a retrieval‑augmented generation (RAG) pipeline that cuts diagnostic latency by ~30% and increases the relevance of extracted performance insights.
+
+
+
 ### 2026-05-07
 **Project: VellumLedger**  
 - Implemented a cleanup phase that activates biometric authentication, tightening security controls and reducing the risk of unauthorized access to ledger data.
