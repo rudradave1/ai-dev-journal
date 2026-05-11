@@ -38,6 +38,40 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-05-11
+## `rudradave1/kmp-fintech-starter` — Engineering Update
+
+---
+
+### Cross-Platform Architecture & Project Structure
+- **Slimmed the Android entry point** to a minimal bootstrap — all screens and business logic now reside in `commonMain`, establishing this as a true cross-platform KMP template. Android-specific code is reduced to just a few lines of composition.
+- **Consolidated `TransactionItem`** into the shared components package and resolved all typos in resource package names, fixing broken navigation and import paths across the codebase.
+- **Merged upstream `origin/main`** to align with the latest baseline.
+
+---
+
+### UI/UX Refinements
+- **Category chips** redesigned with refined spacing (20.dp horizontal, 12.dp vertical) and corrected layout constraints — eliminating text truncation and achieving a polished, production-grade appearance.
+- **Interactive profile screen** now provides user feedback via Snackbars on all button actions. The Dark Mode / Light Mode toggle is fully persisted across sessions and reacts immediately to state changes.
+- **Date dimension and date picker UI** updated in the shared module for consistent rendering across platforms.
+
+---
+
+### Localization
+- **All transaction categories and statuses** now render using localized string resources from `composeResources` instead of raw enum names — eliminating hardcoded English strings and enabling full internationalization out of the box.
+
+---
+
+### Platform Targets
+- **iOS target added** with Swift integration, extending the KMP module's reach to Apple platforms.
+
+---
+
+### Infrastructure & Stability
+- **Reverted to the standard SQLite driver** to resolve an unresolved `sqlcipher` build failure. The project now builds and runs reliably without external encryption dependencies, ensuring a working product from first checkout.
+
+
+
 ### 2026-05-09
 - Minor development updates
 
