@@ -38,6 +38,35 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-05-16
+**Project: vellum-ledger-api**  
+- **Optimized backend data processing**: Refactored `InsightRoutes.kt` to correctly convert paise values to rupees (dividing by 100) and format with the ₹ symbol in LLM prompts, ensuring accurate financial insights for users.  
+- **Reverted non-production logic**: Temporarily rolled back changes to `InsightRoutes.kt` to restore transaction data integrity during testing or debugging phases.  
+
+---
+
+**Project: VellumLedger**  
+- **Architectural modernization**: Retired the monolithic `LedgerRepository`, replacing it with specialized repositories and UseCases to improve scalability, maintainability, and data integrity.  
+- **Enhanced data synchronization**: Implemented atomic deletion of transactions and queue entries to resolve orphaned sync items, ensuring reliable data consistency.  
+- **Robust error handling**: Added a "Verify-and-Recover" database initialization process for Android to manage encryption key mismatches, reducing data loss risks.  
+- **New feature implementations**:  
+  - Introduced `ExportTransactionsUseCase` for CSV exports and `GetAnalyticsUseCase` with caching to improve reporting performance.  
+  - Standardized app settings using constant-based keys and thread-safe `Mutex` synchronization for safer configuration management.  
+- **Quality assurance**: Added 14 unit tests covering transaction workflows, sync mechanisms, and data integrity checks.  
+- **Security and configuration**: Finalized Koin DI integration across all layers and updated `AuthRequest` to derive credentials from device UUIDs, enhancing security.  
+- **Release configuration**: Added release signing setup via `keystore.properties` to streamline app deployment.  
+
+---
+
+**Project: vellumledger-privacy**  
+- **Compliance and transparency**: Migrated terms of service and privacy policy to HTML format for better readability and user accessibility.  
+- **Policy integration**: Added links to TNC and privacy policy in the SettingsScreen, ensuring users can easily review critical legal documents.  
+- **Content refinement**: Revised policy texts for clarity, completeness, and legal alignment, replacing legacy text with structured HTML.  
+
+Each update emphasizes technical impact, architectural improvements, and user-facing benefits while avoiding generic terminology.
+
+
+
 ### 2026-05-15
 - Minor development updates
 
