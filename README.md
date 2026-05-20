@@ -38,6 +38,17 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-05-20
+**SwiggyMind v1.0.4 – The Real Mind Engine**
+
+- **Security** – Migrated all API credentials to `local.properties`, eliminating external secret exposure and dramatically reducing the attack surface.  
+- **Intelligence** – Integrated LLM‑driven intent refinement and extraction, boosting intent‑classification accuracy and enabling more precise, context‑aware user queries.  
+- **Resilience** – Reinforced `ResponseOrchestrator` with high‑fidelity fallback mechanisms, cutting downstream failure incidents and improving service continuity.  
+- **Validation** – Added the `MindEngineTest` suite, delivering automated verification of reasoning pipelines and guaranteeing consistent performance across releases.  
+- **UX** – Deployed dynamic ingredient discovery and contextual session memory, providing personalized, real‑time recommendations and a seamless conversational experience.
+
+
+
 ### 2026-05-19
 - Minor development updates
 
