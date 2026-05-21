@@ -38,6 +38,21 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-05-21
+**Vellum Ledger API Integration**
+- Implemented secure SSL configuration for Supabase integration
+- Enhanced database compatibility by using full DATABASE_URL
+- Improved parsing logic to handle special characters in password fields
+- Sync optimizations to reduce conflicts during upsert operations
+- Optimized memory usage on Render free tier via JAVA_OPTS
+
+**Vellum Ledger Privacy Layer**
+- Executed API URL update in config.json for privacy compliance
+- Strengthened data integrity by standardizing API endpoints
+- Streamlined configuration to support secure, compliant ledger operations
+
+
+
 ### 2026-05-20
 **SwiggyMind v1.0.4 – The Real Mind Engine**
 
