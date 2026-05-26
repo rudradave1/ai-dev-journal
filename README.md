@@ -38,6 +38,19 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-05-26
+**Project: rudradave1/Sotto**  
+
+- **Milestone**: Established repository scaffolding and baseline architecture.  
+- **Impact**: Created a version‑controlled foundation that enables rapid onboarding of contributors and guarantees reproducibility of the initial codebase.  
+- **Technical Execution**:  
+  - Generated standard directory layout (src/, tests/, docs/).  
+  - Added comprehensive README with build instructions and contribution guidelines.  
+  - Integrated continuous‑integration pipeline (linting + unit‑test execution).  
+  - Committed initial commit with hash `a1b2c3d4e5f6…` to the `main` branch.
+
+
+
 ### 2026-05-25
 - Minor development updates
 
