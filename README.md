@@ -38,6 +38,38 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-06-01
+### Project: VellumLedger  
+**Release v1.1.0: Security Hardening, Localization, and Stability Enhancements**  
+
+#### Security:  
+- **Migrated token storage** from `NSUserDefaults` to iOS Keychain to eliminate insecure credential handling, mitigating potential token leakage risks.  
+
+#### Localization:  
+- **Implemented Indian numbering system (3-2-2 grouping)** for INR currency formatting, ensuring compliance with local financial standards and improving user experience for Indian markets.  
+
+#### Stability:  
+- **Resolved division-by-zero crash** in compact money formatting logic, preventing app instability when displaying zero balances.  
+
+#### User Experience:  
+- **Enhanced sync error visibility** by improving background sync failure reporting, enabling users to diagnose and troubleshoot sync issues proactively.  
+
+#### Platform:  
+- **Standardized debug build detection** on iOS using `Platform.isDebugBinary`, ensuring consistent behavior across development and production environments.  
+
+#### Release:  
+- **Bumped version to 1.1.0**, delivering a stable, secure, and regionally optimized release.  
+
+---  
+**Impact Summary**:  
+- **Security**: Eliminated critical token vulnerability via Keychain migration.  
+- **Localization**: Delivered region-specific financial formatting for INR users.  
+- **Stability**: Prevented crashes in edge-case balance scenarios.  
+- **UX**: Empowered users with actionable sync failure insights.  
+- **Platform**: Improved build environment reliability.
+
+
+
 ### 2026-05-31
 - Minor development updates
 
