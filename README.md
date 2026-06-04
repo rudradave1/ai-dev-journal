@@ -38,6 +38,23 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-06-04
+**Project: Sotto (v0.1.0)**  
+*Production-ready core loop for voice journaling and mood tracking*  
+
+- **Core Functionality**: Delivered a 5-minute voice recording system with live duration tracking, enabling users to capture thoughts efficiently. Integrated multilingual transcription (Hindi/English) via Groq Whisper API, paired with Llama-based structured extraction to auto-generate mood, category, tags, and insights from entries.  
+- **Data Management**: Implemented encrypted local storage using SQLCipher and SQLDelight with FTS4 search, ensuring secure offline access to journal entries. Added background transcription processing via WorkManager for seamless user experience.  
+- **UI/UX Enhancements**: Designed dynamic mood color transitions and animated UI elements to visualize emotional trends. Built a journal screen with date-grouped entries (Today/Yesterday/This Week/Older) and detailed insight cards. Created an onboarding flow with permission rationale and settings deeplinks for intuitive first-time setup.  
+- **Security & Compliance**: Enforced certificate pinning for Groq API communication and configured Zero Data Retention (ZDR) to protect user privacy. Enabled ProGuard/R8 optimizations with verified zero warnings, ensuring code obfuscation without runtime issues.  
+- **Reliability & Performance**: Resolved critical race conditions in auto-stop logic and year-boundary date grouping. Implemented robust error handling for network failures, rate limits, and timeouts, with retry mechanisms for transcription services. Added a hallucination filter to sanitize AI-generated insights.  
+- **Technical Foundation**: Refactored navigation away from singleton patterns to improve scalability. Optimized search index management with FTS delete triggers and integrated debug-only logging (SottoLog) for development without production overhead.  
+
+**Technical Specifications**:  
+- Android: minSdk 26 / targetSdk 34 / compileSdk 36  
+- Package: com.sotto.app | versionCode 1 | versionName 0.1.0
+
+
+
 ### 2026-06-03
 - Minor development updates
 
