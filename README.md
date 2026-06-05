@@ -38,6 +38,11 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-06-05
+- Minor development updates
+
+
+
 ### 2026-06-04
 **Project: Sotto (v0.1.0)**  
 *Production-ready core loop for voice journaling and mood tracking*  
