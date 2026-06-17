@@ -38,6 +38,17 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-06-17
+## rudradave1/sotto-app
+- Synchronized the local branch with `origin/main` to incorporate the latest upstream changes.
+- Added the app logo to strengthen product branding and visual identity.
+- Updated the README to clearly document the app’s purpose, current feature set, and key capabilities.
+
+## rudradave1/rudradave1
+- Added a profile views badge to the GitHub profile README to surface audience engagement metrics.
+
+
+
 ### 2026-06-16
 - Minor development updates
 
