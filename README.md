@@ -38,6 +38,28 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-07-01
+Since the provided commits are documentation-focused, the summary should frame these updates as improving project accessibility and onboarding readiness.
+
+Here are two ways to present this, depending on the intended audience:
+
+### Option 1: For a Daily Standup/Slack (Concise)
+**Sotto App**
+*   **Documentation:** Enhanced project onboarding by updating the README with comprehensive Terms and Conditions and visual documentation (screenshots).
+
+### Option 2: For a Weekly Report/Manager (Impact-Oriented)
+**Sotto App**
+*   **Developer Experience (DX):** Improved repository usability and onboarding flow by standardizing documentation and adding visual assets to the README.
+
+***
+
+**Key Improvements Made:**
+*   **Replaced** "updated readme" with **"Enhanced project onboarding."**
+*   **Replaced** "screenshots added" with **"visual documentation."**
+*   **Grouped** the minor commits into a single, high-impact bullet point.
+
+
+
 ### 2026-06-30
 **Project: DefineEasy(v4.0.0 Release)**  
 
