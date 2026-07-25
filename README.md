@@ -38,6 +38,16 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-07-25
+**DefineEasy**
+
+- **Skeleton loading:** Replaced spinner indicators with shimmer skeleton screens on Favorites, Progress, Review, and Collections, cutting perceived load time and giving users immediate visual feedback while content fetches.  
+- **Pull‑to‑refresh:** Integrated pull‑to‑refresh gestures on Favorites and Collections, enabling instant data reload with a single gesture and reducing navigation overhead.  
+- **Haptic feedback:** Added precise haptic responses to quiz answer selections and favorite toggles, reinforcing user actions and increasing confidence in interactions.  
+- **Onboarding illustrations:** Substituted generic emojis with custom vector illustrations in the onboarding flow, strengthening brand identity and improving visual polish.
+
+
+
 ### 2026-07-24
 - Minor development updates
 
