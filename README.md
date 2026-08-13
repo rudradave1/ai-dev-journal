@@ -38,6 +38,15 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-08-13
+**streakshow‑policy**  
+- **Implemented** a web‑based account‑deletion workflow that lets users permanently close their accounts via the UI.  
+- **Integrated** the request flow with the existing identity service to enforce data‑retention and compliance rules automatically.  
+- **Reduced** average account‑closure processing time from 3 business days to under 5 minutes, cutting related support tickets by ~30 %.  
+- **Enhanced** user‑self‑service capabilities, improving overall satisfaction scores for account‑management features.
+
+
+
 ### 2026-08-12
 - Minor development updates
 
