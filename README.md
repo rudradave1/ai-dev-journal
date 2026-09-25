@@ -38,6 +38,27 @@ This is optional but recommended.
 
 <!-- JOURNAL_START -->
 
+### 2026-09-25
+## TimbreMiniApp — Engineering Update Summary
+
+### Core Feature Delivery
+- **Completed end-to-end media trimming pipeline**: Integrated a media picker, ExoPlayer-based preview, FFmpeg stream-copy trimming with real-time export progress, and MediaStore/FileProvider-based save paths — delivering a fully functional video trimming experience.
+- **Resolved FFprobe container detection**: Updated `deriveExtensionAndMime` to prioritize WebM detection, addressing FFprobe's reporting of WebM containers as `"matroska,webm"` and ensuring correct MIME type resolution.
+
+### Stability & Code Quality
+- **Hardened MediaStore write paths** and **unified error handling** across the media pipeline to reduce crash surface and improve failure recovery.
+- **Added device rotation support**, audio track handling, and consolidated string resources for consistent localization readiness.
+
+### Testing & Compatibility
+- **Implemented trimmer module with unit tests**, establishing test coverage for the core trimming logic.
+- **Enabled output sharing on legacy Android versions** via FileProvider, broadening backward compatibility.
+
+### Build & Release Infrastructure
+- **Configured ProGuard rules and app icons** for release-ready build optimization.
+- **Published built APK and documentation** alongside a dark red UI refresh and updated README for stakeholder review.
+
+
+
 ### 2026-09-24
 - Minor development updates
 
